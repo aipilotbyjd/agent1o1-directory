@@ -1,3 +1,4 @@
+import {ClerkProvider} from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
@@ -26,11 +27,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${plusJakartaSans.variable} ${jetbrainsMono.variable}`}>
       <body>
-        <div className="background-grid" />
-        <div className="background-glow" />
-        <div className="layout-wrapper">
+        <ClerkProvider>
+          <div className="background-grid" />
+          <div className="background-glow" />
+          <div className="layout-wrapper">
           {children}
-        </div>
+          </div>
+        </ClerkProvider>
       </body>
     </html>
   );

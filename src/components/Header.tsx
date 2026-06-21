@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { SignInButton, SignUpButton, Show, UserButton } from "@clerk/nextjs";
 import styles from "./Header.module.css";
 
 export default function Header() {
@@ -184,14 +185,24 @@ export default function Header() {
           </button>
           
           <Link href="/submit" className={styles.btnSubmit}>Submit Server</Link>
-          
-          <Link href="/auth/signin" className={styles.btnSignIn}>
-            <svg className={styles.btnSignInIcon} viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            <span>Sign In</span>
-          </Link>
+
+          <Show when="signed-out">
+            <SignInButton mode="redirect">
+              <button className={styles.btnSignIn}>
+                <svg className={styles.btnSignInIcon} viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span>Sign In</span>
+              </button>
+            </SignInButton>
+            <SignUpButton mode="redirect">
+              <button className={styles.btnSubmit}>Sign Up</button>
+            </SignUpButton>
+          </Show>
+          <Show when="signed-in">
+            <UserButton />
+          </Show>
 
           {/* Mobile Menu Toggle Button */}
           <button
@@ -258,13 +269,20 @@ export default function Header() {
           <Link href="/submit" className={styles.mobileBtnSubmit} onClick={() => setIsMenuOpen(false)}>
             Submit Server
           </Link>
-          <Link href="/auth/signin" className={styles.mobileBtnSignIn} onClick={() => setIsMenuOpen(false)}>
-            <svg className={styles.btnSignInIcon} viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            Sign In
-          </Link>
+          <Show when="signed-out">
+            <SignInButton mode="redirect">
+              <button className={styles.mobileBtnSignIn} onClick={() => setIsMenuOpen(false)}>
+                <svg className={styles.btnSignInIcon} viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Sign In
+              </button>
+            </SignInButton>
+          </Show>
+          <Show when="signed-in">
+            <UserButton />
+          </Show>
         </div>
       </div>
     </header>
