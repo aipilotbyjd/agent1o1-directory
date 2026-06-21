@@ -1,0 +1,414 @@
+/* Styles for the shared Header component */
+
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: var(--header-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.headerInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 64px;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.logoImg {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 100%;
+}
+
+.navItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.navLink {
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.navItem:hover .navLink {
+  color: var(--text-primary);
+}
+
+.navLink:hover {
+  color: var(--text-primary);
+}
+
+.navChevron {
+  opacity: 0.6;
+  width: 10px;
+  height: 10px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.navItem:hover .navChevron {
+  opacity: 1;
+  transform: rotate(180deg);
+}
+
+.navLink:hover .navChevron {
+  opacity: 1;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% - 8px);
+  left: -12px;
+  width: 270px;
+  background-color: var(--dropdown-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 
+              0 1px 3px var(--border-color);
+}
+
+.navItem:hover .dropdownMenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: background-color 0.15s ease;
+  text-decoration: none;
+}
+
+.dropdownItem:hover {
+  background-color: var(--card-hover-bg);
+}
+
+.dropdownIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+  transition: color 0.15s ease;
+}
+
+.dropdownItem:hover .dropdownIcon {
+  color: var(--text-primary);
+}
+
+.dropdownMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dropdownTitle {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: color 0.15s ease;
+}
+
+.dropdownDesc {
+  font-size: 11.5px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.themeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.themeToggle:hover {
+  color: var(--text-primary);
+  background-color: var(--border-color);
+}
+
+.btnSubmit {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btnSubmit:hover {
+  background-color: var(--card-hover-bg);
+  border-color: var(--border-hover);
+}
+
+.btnSignIn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btnSignIn:hover {
+  background-color: var(--card-hover-bg);
+  border-color: var(--border-hover);
+}
+
+.btnSignInIcon {
+  width: 14px;
+  height: 14px;
+  opacity: 0.8;
+}
+
+/* Mobile menu toggle button */
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #8e9099;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  z-index: 110;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuToggle:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.menuIcon {
+  overflow: visible;
+}
+
+.menuIcon line {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  transform-origin: center;
+}
+
+.isOpen .lineMiddle {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.isOpen .lineTop {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.isOpen .lineBottom {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Mobile Drawer Overlay */
+.mobileDrawer {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  background-color: var(--dropdown-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 99;
+}
+
+.drawerOpen {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobileNavLink {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.mobileNavLink:hover {
+  color: var(--text-primary);
+  background-color: var(--card-hover-bg);
+  border-color: var(--border-hover);
+  transform: translateX(4px);
+}
+
+.mobileNavChevron {
+  width: 14px;
+  height: 14px;
+  opacity: 0.5;
+  transition: transform 0.2s ease;
+}
+
+.mobileNavLink:hover .mobileNavChevron {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+.mobileActions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+}
+
+.mobileBtnSubmit {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.mobileBtnSubmit:hover {
+  background-color: var(--card-hover-bg);
+  border-color: var(--border-hover);
+}
+
+.mobileBtnSignIn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%);
+  border: none;
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.15);
+  text-decoration: none;
+}
+
+.mobileBtnSignIn:hover {
+  opacity: 0.95;
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.25);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .headerInner {
+    padding: 0 16px;
+  }
+  .nav {
+    display: none;
+  }
+  .btnSubmit {
+    display: none;
+  }
+  .menuToggle {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .btnSignIn {
+    display: none;
+  }
+}
